@@ -53,6 +53,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void ApplyRotation(float rotationPerFrame)
     {
+        rb.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationPerFrame * Time.fixedDeltaTime);
+        rb.freezeRotation = false;
     }
 }
