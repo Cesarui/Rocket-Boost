@@ -50,7 +50,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             ApplyRotation(-rotationStrength);
         }
     }
-
+    // At the start of this method, rigid body is frozen but when buttons are pressed rigid body is unfrozen
     private void ApplyRotation(float rotationPerFrame)
     {
         rb.freezeRotation = true;
