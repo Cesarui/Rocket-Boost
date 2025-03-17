@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,10 +12,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [SerializeField] float thrustStrenght = 10f;
     [SerializeField] float rotationStrength = 10f;
     Rigidbody rb;
+    AudioSource audioSource;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Input action enabled, it can also be disabled and called multiple times
@@ -35,6 +38,15 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (thrust.IsPressed())
         {
             rb.AddRelativeForce(Vector3.up * thrustStrenght * Time.fixedDeltaTime);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+
+        }
+        else
+        {
+            audioSource.Stop();
         }
     }
 
