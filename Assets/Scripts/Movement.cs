@@ -32,7 +32,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         ProccessThrust();
         ProcessRotation();
     }
-
+    // Thrust Audio Player and Upward Force
     private void ProccessThrust()
     {
         if (thrust.IsPressed())
