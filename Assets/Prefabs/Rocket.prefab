@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6383056240732576126}
   m_Layer: 0
   m_Name: Rocket
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +216,15 @@ MonoBehaviour:
     m_Id: b0977351-93cb-4b95-ba3c-fc6ea5d474bd
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: d864b3c5-c086-40e3-ab1f-c30abd053545
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Thrust
+      m_Flags: 0
     m_Flags: 0
   rotation:
     m_Name: Rotation
@@ -225,10 +233,34 @@ MonoBehaviour:
     m_Id: 51632ae9-ef88-4594-b9fb-fccc7b3c9ac1
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 1D Axis
+      m_Id: 1b6cce94-9dce-4704-acf9-60fd73ccbe8a
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 0bc9035c-630c-4aaa-916b-fafc6e9ad1dc
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: e4cb0c8f-9edf-423e-9df8-952f890ffc82
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 8
     m_Flags: 0
-  thrustStrenght: 10
-  rotationStrength: 10
+  thrustStrenght: 1100
+  rotationStrength: 100
   mainEngine: {fileID: 8300000, guid: f67d4e4f012f55e48ae2b524307f92ad, type: 3}
 --- !u!1001 &7955001851444924134
 PrefabInstance:
