@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Movement : MonoBehaviour
 {
 
     [SerializeField] InputAction thrust;
@@ -11,6 +11,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     [SerializeField] float thrustStrenght = 10f;
     [SerializeField] float rotationStrength = 10f;
+    [SerializeField] AudioClip mainEngine;
+
     Rigidbody rb;
     AudioSource audioSource;
 
@@ -40,7 +42,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             rb.AddRelativeForce(Vector3.up * thrustStrenght * Time.fixedDeltaTime);
             if (!audioSource.isPlaying)
             {
-                audioSource.Play();
+                audioSource.PlayOneShot(mainEngine);
             }
 
         }

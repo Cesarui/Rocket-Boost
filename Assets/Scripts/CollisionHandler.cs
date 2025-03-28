@@ -1,8 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CollisionHandAlert : MonoBehaviour
+public class CollisionHandler : MonoBehaviour
 {
+    [SerializeField] float delayAmount = 2f;
+    [SerializeField] AudioClip crashSound;
+    [SerializeField] AudioClip successSound;
+
+    AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         switch (collision.gameObject.tag)
@@ -10,21 +21,43 @@ public class CollisionHandAlert : MonoBehaviour
             case "Friendly":
                 Debug.Log("You are colliding with a friendly object");
                 break;
-            case "Fuel":
-                Debug.Log("You got some fuel");
-                break;
             case "Finish":
-                Debug.Log("You have reacher the finished station");
+                audioSource.PlayOneShot(successSound);
+                StartSuccessSequence();
                 break;
             default:
-                ReloadLevel();
+                audioSource.PlayOneShot(crashSound);
+                StartCrashSequence();
                 break;
         }
-
-        void ReloadLevel()
-        {
-            int currentScene = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentScene);
-        }
     }
+
+    private void StartSuccessSequence()
+    {
+        GetComponent<Movement>().enabled = false;
+        Invoke("LoadNextLevel", delayAmount);
+    }
+
+    private void StartCrashSequence()
+    {
+        GetComponent<Movement>().enabled = false;
+        Invoke("ReloadLevel", delayAmount);
+    }
+
+    void LoadNextLevel()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        int nextScene = currentScene + 1;
+        if (nextScene == SceneManager.sceneCountInBuildSettings)
+        {
+            nextScene = 0;
+        }
+        SceneManager.LoadScene(nextScene);
+    }
+    void ReloadLevel()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene);
+    }
+
 }
