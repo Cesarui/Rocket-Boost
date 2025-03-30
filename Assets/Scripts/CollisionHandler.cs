@@ -18,6 +18,8 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Returns if isControllable is false, so the methods called when a collsion happen only get called one time.
+
         if (!isControllable) { return; }
 
         switch (collision.gameObject.tag)
