@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Input action enabled, it can also be disabled and called multiple times
+    // Input action enabled, it can also be disabled and called multiple times!
     private void OnEnable()
     {
         thrust.Enable();
