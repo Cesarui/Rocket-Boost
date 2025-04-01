@@ -13,6 +13,10 @@ public class Movement : MonoBehaviour
     [SerializeField] float rotationStrength = 10f;
     [SerializeField] AudioClip mainEngine;
 
+    [SerializeField] ParticleSystem mainBooster;
+    [SerializeField] ParticleSystem leftBooster;
+    [SerializeField] ParticleSystem rightBooster;
+
     Rigidbody rb;
     AudioSource audioSource;
 
@@ -44,11 +48,15 @@ public class Movement : MonoBehaviour
             {
                 audioSource.PlayOneShot(mainEngine);
             }
-
+            if (!mainBooster.isPlaying)
+            {
+                mainBooster.Play();
+            }
         }
         else
         {
             audioSource.Stop();
+            mainBooster.Stop();
         }
     }
 
@@ -58,10 +66,25 @@ public class Movement : MonoBehaviour
         if (rotationInput < 0)
         {
             ApplyRotation(rotationStrength);
+            if (!rightBooster.isPlaying)
+            {
+                leftBooster.Stop();
+                rightBooster.Play();
+            }
         }
         else if (rotationInput > 0)
         {
             ApplyRotation(-rotationStrength);
+            if (!leftBooster.isPlaying)
+            {
+                rightBooster.Stop();
+                leftBooster.Play();
+            }
+        }
+        else
+        {
+            rightBooster.Stop();
+            leftBooster.Stop();
         }
     }
     // At the start of this method, rigid body is frozen but when buttons are pressed rigid body is unfrozen
