@@ -62,7 +62,7 @@ public class Movement : MonoBehaviour
 
     private void ProcessRotation()
     {
-        // No motivation today so Imma just leave this here...
+        // No motivation today so Imma just leave this here...monday the sun will rise again and so will I
         float rotationInput = rotation.ReadValue<float>();
         if (rotationInput < 0)
         {
