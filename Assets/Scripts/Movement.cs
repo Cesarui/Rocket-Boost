@@ -43,51 +43,74 @@ public class Movement : MonoBehaviour
     {
         if (thrust.IsPressed())
         {
-            rb.AddRelativeForce(Vector3.up * thrustStrenght * Time.fixedDeltaTime);
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(mainEngine);
-            }
-            if (!mainBooster.isPlaying)
-            {
-                mainBooster.Play();
-            }
+            StartThrust();
         }
         else
         {
-            audioSource.Stop();
-            mainBooster.Stop();
+            StopThrust();
         }
     }
 
+    private void StopThrust()
+    {
+        audioSource.Stop();
+        mainBooster.Stop();
+    }
+
+    private void StartThrust()
+    {
+        rb.AddRelativeForce(Vector3.up * thrustStrenght * Time.fixedDeltaTime);
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(mainEngine);
+        }
+        if (!mainBooster.isPlaying)
+        {
+            mainBooster.Play();
+        }
+    }
+
+    private void RotateLeft()
+    {
+        ApplyRotation(-rotationStrength);
+        if (!leftBooster.isPlaying)
+        {
+            rightBooster.Stop();
+            leftBooster.Play();
+        }
+    }
+    private void RotateRight()
+    {
+        ApplyRotation(rotationStrength);
+        if (!rightBooster.isPlaying)
+        {
+            leftBooster.Stop();
+            rightBooster.Play();
+        }
+    }
+    private void StopRotating()
+    {
+        rightBooster.Stop();
+        leftBooster.Stop();
+    }
     private void ProcessRotation()
     {
         // No motivation today so Imma just leave this here...monday the sun will rise again and so will I - 1 days left
         float rotationInput = rotation.ReadValue<float>();
         if (rotationInput < 0)
         {
-            ApplyRotation(rotationStrength);
-            if (!rightBooster.isPlaying)
-            {
-                leftBooster.Stop();
-                rightBooster.Play();
-            }
+            RotateRight();
         }
         else if (rotationInput > 0)
         {
-            ApplyRotation(-rotationStrength);
-            if (!leftBooster.isPlaying)
-            {
-                rightBooster.Stop();
-                leftBooster.Play();
-            }
+            RotateLeft();
         }
         else
         {
-            rightBooster.Stop();
-            leftBooster.Stop();
+            StopRotating();
         }
     }
+
     // At the start of this method, rigid body is frozen but when buttons are pressed rigid body is unfrozen
     private void ApplyRotation(float rotationPerFrame)
     {
