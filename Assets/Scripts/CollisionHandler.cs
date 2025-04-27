@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-// CONTINUEEEEE ON MONDAY!!!
+// CONTINUEEEEE ON MONDAY!!! - Almost Mondayyyy!
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float delayAmount = 2f;
