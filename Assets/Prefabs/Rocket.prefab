@@ -10349,6 +10349,7 @@ GameObject:
   - component: {fileID: 9026618823929937889}
   - component: {fileID: 8028360943518216009}
   - component: {fileID: 6383056240732576126}
+  - component: {fileID: 2619958141662797126}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -10608,6 +10609,35 @@ MonoBehaviour:
   mainBooster: {fileID: 6074037043834580523}
   leftBooster: {fileID: 446560656664078998}
   rightBooster: {fileID: 6437111454820990109}
+--- !u!114 &2619958141662797126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217613811169297744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34bf209278352804490702b006fdadd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quitKey:
+    m_Name: Quit Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d48a8e93-d1c4-4310-aa54-d2fd9294dda0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 871d1d00-5b04-42a9-95d2-77d9dc49cff9
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Quit Key
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &6118932561577046868
 GameObject:
   m_ObjectHideFlags: 0
